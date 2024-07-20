@@ -8,7 +8,6 @@
 	</div>
 </section>
 
-
 <section class="uk-section uk-section-medium">
 	<div class="uk-container uk-container-xlarge" uk-scrollspy="cls: uk-animation-slide-bottom-medium;">
 		<div class="uk-text-muted uk-text-small"><?=the_field('date_publish')?></div>

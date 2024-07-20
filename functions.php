@@ -373,3 +373,46 @@ add_action( 'after_setup_theme', 'theme_register_nav_menu' );
 function theme_register_nav_menu() {
 	register_nav_menu( 'primary', 'Основное меню' );
 }
+
+
+/*
+* Редирект и переменная для рабочей группы
+*/
+function custom_rewrite_workgroups() {
+  add_rewrite_rule('gruppa/([a-z0-9-]+)[/]?$','index.php?page_id=8483&gruppa=$matches[1]','top');
+}
+add_filter( 'query_vars', function( $query_vars ) {
+  $query_vars[] = 'gruppa';
+  return $query_vars;
+});
+add_action('init', 'custom_rewrite_workgroups', 10, 0);
+/*
+* Редирект и переменная для состава палаты
+*/
+function custom_rewrite_sozyvi() {
+  add_rewrite_rule('sozyvy-op/([a-z0-9-]+)[/]?$','index.php?page_id=11388&sozyv=$matches[1]','top');
+}
+add_filter( 'query_vars', function( $query_vars ) {
+  $query_vars[] = 'sozyv';
+  return $query_vars;
+});
+add_action('init', 'custom_rewrite_sozyvi', 10, 0);
+/*
+* Редирект и переменная для состава палаты
+*/
+function custom_rewrite_comissions() {
+  add_rewrite_rule('comissiony-op/([a-z0-9-]+)[/]?$','index.php?page_id=8485comission=$matches[1]','top');
+}
+add_filter( 'query_vars', function( $query_vars ) {
+  $query_vars[] = 'comission';
+  return $query_vars;
+});
+add_action('init', 'custom_rewrite_comissions', 10, 0);
+
+/*
+* Без заголовка
+*/
+add_filter( 'query_vars', function( $query_vars ) {
+  $query_vars[] = 'notitle';
+  return $query_vars;
+});

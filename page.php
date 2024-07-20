@@ -4,6 +4,11 @@
 */
 
 get_header();
+
+$no_title = (
+	! is_null($wp_query->query_vars['gruppa'])
+);
+
 ?>
 
 <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
@@ -19,48 +24,33 @@ get_header();
 		</div>
 	</section>
 
+	<?php if (!$no_title) { ?>
 	<div class="header_big uk-margin-large-top">
 		<div class="uk-container uk-container-xlarge">
-			<div><?=get_the_title()?></div>
+			<div><?= get_the_title(); ?></div>
 		</div>
 	</div>
-
+	<?php } ?>
 
 	<section class="uk-section uk-section-medium">
 		<div class="uk-container uk-container-xlarge" uk-scrollspy="cls: uk-animation-slide-bottom-medium;">
 
 			<div class="uk-grid">
 
-				<?php 
-					if( is_page( 8456 ) ):
-				?>
-					<div class="uk-width-1-4@m uk-width-1-6@l">
+				<!-- Левая колонка -->
 
-
-					<?php
-						wp_nav_menu(
-							array(
-								'menu' => '10'
-							)
-						);
-					?>
-
-
-					</div>
-				<?php 
-					endif;
-				?>
-
-
-
+				<?php get_template_part('components/left_column'); ?>
+				
+				<!-- / Левая колонка -->
+				
 				<div class="uk-width-expand">
-
-				<div class="row">
-					<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-						<?php the_content(); ?>
-					</article>
-				</div>
-
+					
+				<!-- Контент -->
+					
+				<?php get_template_part('components/page_content'); ?>
+				
+				<!-- / Контент -->
+				
 				</div>
 			</div>
 		</div>
