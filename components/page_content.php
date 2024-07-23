@@ -11,6 +11,16 @@ switch ($post->ID) {
     case 11388:
         get_template_part('components/sostav_op');
     break;
+
+    // Страница "Совет палаты"
+    case 8484:
+        get_template_part('components/council');
+    break;
+
+    // Страница "Комиссии"
+    case 8485:
+        get_template_part('components/comissions');
+    break;
         
     // Страница по умолчанию
     default:

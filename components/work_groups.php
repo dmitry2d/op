@@ -16,10 +16,43 @@ if ( ! is_null($group_post)) {
     // Если это одна группа
     ?>
     
-        <small><a href="/rabochie-gruppy/">< Рабочие группы</a></small>
+        <!-- <small><a href="/rabochie-gruppy/">< Рабочие группы</a></small> -->
         <h2><?= $group_post->post_title ?></h2>
-        <div class="group_content">
-            <?= $group_post->post_content ?>
+        <div class="uk-grid">
+            <div class="uk-width-2-5@l">                
+                <h3>Руководитель:</h3>
+                <?php 
+                    $members = get_field('rekovoditel', $group_post);
+                    if (! is_null($members)) foreach ($members as $member) {
+                        ?>
+
+                        <div class="">
+                            <i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;<a href="<?=get_the_permalink(($member->ID))?>"><?=$member->post_title?></a>
+                        </div>
+
+                        <?php
+                    }
+                ?>
+                <h3>Состав:</h3>
+                <?php 
+                    $members = get_field('sostav', $group_post);
+                    if (! is_null($members)) foreach ($members as $member) {
+                        ?>
+
+                        <div class="">
+                            <i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;<a href="<?=get_the_permalink(($member->ID))?>"><?=$member->post_title?></a>
+                        </div>
+
+                        <?php
+                    }
+                ?>
+
+            </div>
+            <div class="uk-width-3-5@l">
+                <p>
+                    <?= $group_post->post_content ?>
+                </p>
+            </div>
         </div>
 
     <?php
@@ -35,8 +68,12 @@ if ( ! is_null($group_post)) {
 
     foreach ($group_posts as $group_post) {
         ?>
-            <div class="">
-                <a href="<?the_permalink($group_post->ID)?>"><?=$group_post->post_title?></a>
+            <div class="sozyv_link">
+                <h3>
+                    <i class="fa fa-address-book-o" aria-hidden="true"></i>
+                    &nbsp;&nbsp;
+                    <a href="<?the_permalink($group_post->ID)?>"><?=$group_post->post_title?></a>
+                </h3>
             </div>
         <?php
     }
