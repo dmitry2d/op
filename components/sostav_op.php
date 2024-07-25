@@ -94,6 +94,18 @@ if ( ! is_null($sozyv_post)) {
             )
         )
     ));
+    $comission_posts = get_posts (array( 
+        'post_type' => 'post',
+        'post_status' => 'publish',
+        'cat' => 12,
+        'meta_query' => array(
+            array(
+                'key' => 'sostav',
+                'value' => $member_post->ID,
+                'compare' => 'LIKE'
+            )
+        )
+    ));
 
 ?>
     
@@ -103,11 +115,11 @@ if ( ! is_null($sozyv_post)) {
     <?php if (! is_null($sozyv_post)) { ?>
         <div>
             <a href="<?=get_the_permalink($sozyv_post->ID)?>">
-                <i class="fa fa-angle-double-left" aria-hidden="true"></i>&nbsp;
-                <?=$sozyv_post->post_title?>
+                <i class="fa fa-angle-double-left" aria-hidden="true"></i>&nbsp;<?=$sozyv_post->post_title?>
             </a>
         </div>
     <?php } ?>
+        <br>
     <div class="sozyv_member">
         <div class="sozyv_member__img">
             <?= get_the_post_thumbnail($member_post)?>
@@ -117,22 +129,42 @@ if ( ! is_null($sozyv_post)) {
             <p>
                 <?=apply_filters( 'the_content', $member_post->post_content )?>
             </p>
-            <?php 
-                if ( ! is_null($group_posts)) {
-            ?>
 
-                    <h3>Состоит в рабочих группах:</h3>
+            
+            <?php 
+                if ( ! is_null($group_posts[0])) {
+            ?>
+            <h3>Состоит в рабочих группах:</h3>
             <?php 
                 foreach ($group_posts as $group_post) {
             ?>
-                <div><i class="fa fa-cogs" aria-hidden="true"></i>&nbsp;&nbsp;<a href="<?=get_the_permalink($group_post)?>"><?=$group_post->post_title?></a></div>
+                <div>
+                    <i class="fa fa-cogs" aria-hidden="true"></i>&nbsp;&nbsp;<a href="<?=get_the_permalink($group_post)?>"><?=$group_post->post_title?></a>
+                </div>
             <?php
                 }
             ?>
             <?php
                 }
             ?>
-            <h3</h3>
+            
+            <?php 
+                if ( ! is_null($comission_posts[0])) {
+            ?>
+            <h3>Входит в состав комиссий:</h3>
+            <?php 
+                foreach ($comission_posts as $comission_post) {
+            ?>
+                <div>
+                    <i class="fa fa-cogs" aria-hidden="true"></i>&nbsp;&nbsp;<a href="<?=get_the_permalink($comission_post)?>"><?=$comission_post->post_title?></a>
+                </div>
+            <?php
+                }
+            ?>
+            <?php
+                }
+            ?>
+            
         </div>
     </div>
 

@@ -21,6 +21,11 @@ switch ($post->ID) {
     case 8485:
         get_template_part('components/comissions');
     break;
+
+    // Страница "Документы"
+    case 8489:
+        // get_template_part('components/comissions');
+    break;
         
     // Страница по умолчанию
     default:

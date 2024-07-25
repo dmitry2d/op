@@ -22,7 +22,7 @@ if ( ! is_null($group_post)) {
             <div class="uk-width-2-5@l">                
                 <h3>Руководитель:</h3>
                 <?php 
-                    $members = get_field('rekovoditel', $group_post);
+                    $members = get_field('rukovoditel', $group_post);
                     if (! is_null($members)) foreach ($members as $member) {
                         ?>
 
