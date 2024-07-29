@@ -10,7 +10,7 @@
 
 <div class="header_big uk-margin-large">
 	<div class="uk-container uk-container-xlarge">
-		<div>Созыв палаты</div>
+		<div>Новости</div>
 	</div>
 </div>
 
@@ -22,14 +22,38 @@
       $wp_query = null;
       $wp_query = new WP_Query();
 
-      $wp_query->query('post_type=novost'.'&paged='.$paged);
+      // $params = array(
+      //   'post_type' => 'novost',
+      //   'orderby'   => array(
+      //     'date' =>'DESC'
+      //    )
+      // );
+
+      // $wp_query = new WP_Query($params);
+
+      // $wp_query->query('post_type=novost'.'&paged='.$paged.'&orderby=date');
+      $wp_query->query(array (
+        'post_type' => 'novost',
+        'paged' => $paged,
+        'orderby' => 'date',
+        'order' => 'ASC'
+          // array(
+          //   'date' =>'DESC'
+          // )
+        )
+      );
+
       while ($wp_query->have_posts()) : $wp_query->the_post();
       	$excerpt_reviews = get_the_excerpt();
       	?>
       <div class="uk-width-1-1 uk-width-1-2@m uk-width-1-3@l uk-width-1-4@xl">
         <div class="uk-card">
             <div class="uk-card-wrap">
-              <div class="card-img"><a class="uk-text-small" href="<?=get_permalink();?>" title="Подробнее.."><img src="<?=the_post_thumbnail_url( 'thumbnail' );?>" uk-img></a></div>
+              <div class="card-img">
+                <a class="uk-text-small" href="<?=get_permalink();?>" title="Подробнее..">
+                  <img src="<?=the_post_thumbnail_url( 'thumbnail' );?>" uk-img>
+                </a>
+              </div>
               <div class="uk-margin uk-text-small"><?= the_field('date_publish')?></div>
               <div class="uk-margin uk-h3"><?=get_the_title()?></div>
             </div>

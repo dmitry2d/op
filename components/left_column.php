@@ -38,6 +38,19 @@
                 </div>
             <?php 
         break;
+        // Страница "общественные советы"
+        case  11576:
+            ?>
+                <div class="uk-width-1-3@m uk-width-1-4@l left-column">
+                    <?php
+                        wp_nav_menu(array(
+                            'menu' => '28',
+                            'menu_class' => 'left-column-menu',
+                        ));
+                    ?>
+                </div>
+            <?php 
+        break;
 
     }
 

@@ -356,8 +356,8 @@ function rd_duplicate_post_as_draft(){
 add_action( 'admin_action_rd_duplicate_post_as_draft', 'rd_duplicate_post_as_draft' );
 
 /*
- * Add the duplicate link to action list for post_row_actions
- */
+* Add the duplicate link to action list for post_row_actions
+*/
 function rd_duplicate_post_link( $actions, $post ) {
   if (current_user_can('edit_posts')) {
     $actions['duplicate'] = '<a href="' . wp_nonce_url('admin.php?action=rd_duplicate_post_as_draft&post=' . $post->ID, basename(__FILE__), 'duplicate_nonce' ) . '" title="Копировать элемент" rel="permalink">Дублировать</a>';
@@ -373,7 +373,6 @@ add_action( 'after_setup_theme', 'theme_register_nav_menu' );
 function theme_register_nav_menu() {
 	register_nav_menu( 'primary', 'Основное меню' );
 }
-
 
 /*
 * Редирект и переменная для рабочей группы
@@ -420,6 +419,54 @@ add_filter( 'query_vars', function( $query_vars ) {
   return $query_vars;
 });
 add_action('init', 'custom_rewrite_members', 10, 0);
+
+/*
+* Редирект и переменная для документов
+*/
+function custom_rewrite_documents() {
+  add_rewrite_rule('category/documenti/([a-z0-9-]+)[/]?$','index.php?page_id=8489&doc_cat=$matches[1]','top');
+}
+add_filter( 'query_vars', function( $query_vars ) {
+  $query_vars[] = 'doc_cat';
+  return $query_vars;
+});
+add_action('init', 'custom_rewrite_documents', 10, 0);
+
+/*
+* Редирект и переменная для документа
+*/
+function custom_rewrite_document() {
+  add_rewrite_rule('documenti/([a-z0-9-]+)[/]?$','index.php?page_id=8489&doc_name=$matches[1]','top');
+}
+add_filter( 'query_vars', function( $query_vars ) {
+  $query_vars[] = 'doc_name';
+  return $query_vars;
+});
+add_action('init', 'custom_rewrite_document', 10, 0);
+
+/*
+* Редирект и переменная для общ советов
+*/
+function custom_rewrite_pcouncils() {
+  add_rewrite_rule('category/obschestvennye-sovety/([a-z0-9-]+)[/]?$','index.php?page_id=11576&pcouncil_cat=$matches[1]','top');
+}
+add_filter( 'query_vars', function( $query_vars ) {
+  $query_vars[] = 'pcouncil_cat';
+  return $query_vars;
+});
+add_action('init', 'custom_rewrite_pcouncils', 10, 0);
+
+/*
+* Редирект и переменная для общ совета
+*/
+function custom_rewrite_pcouncil() {
+  add_rewrite_rule('obschestvennye-sovety/([a-z0-9-]+)[/]?$','index.php?page_id=11576&pcouncil_name=$matches[1]','top');
+}
+add_filter( 'query_vars', function( $query_vars ) {
+  $query_vars[] = 'pcouncil_name';
+  return $query_vars;
+});
+add_action('init', 'custom_rewrite_pcouncil', 10, 0);
 
 /*
 * Без заголовка

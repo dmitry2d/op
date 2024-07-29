@@ -24,7 +24,12 @@ switch ($post->ID) {
 
     // Страница "Документы"
     case 8489:
-        // get_template_part('components/comissions');
+        get_template_part('components/documents');
+    break;
+
+    // Страница "Общественные советы"
+    case 11576:
+        get_template_part('components/public_council');
     break;
         
     // Страница по умолчанию

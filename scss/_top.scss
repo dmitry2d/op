@@ -1,0 +1,12 @@
+#topmenu {
+
+    padding: 20px;
+    min-height: 80px;
+    flex-wrap: wrap;
+    align-items: center;
+
+    a {
+        min-height: unset!important;
+    }
+
+}
