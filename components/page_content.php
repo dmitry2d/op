@@ -31,6 +31,11 @@ switch ($post->ID) {
     case 11576:
         get_template_part('components/public_council');
     break;
+
+    // Страница "Рейтинги"
+    case 11786:
+        get_template_part('components/raitings');
+    break;
         
     // Страница по умолчанию
     default:

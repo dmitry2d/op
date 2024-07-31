@@ -29,12 +29,16 @@ if ( ! is_null($sozyv_post)) {
     
     $years = get_field('gody',$sozyv_post->ID);
 
-    $sozyv_members = get_posts (array( 
-        'post_type' => 'member',
-        'posts_per_page' => 1000,
-        'meta_key'      => 'gody',
-        'meta_value'    => $years
-    ));
+    $sozyv_members = get_field('members', $sozyv_post->ID);
+
+    // $sozyv_members = get_posts (array( 
+    //     'post_type' => 'member',
+    //     'posts_per_page' => 1000,
+    //     'meta_key'      => 'gody',
+    //     'meta_value'    => $years
+    // ));
+
+
 
 
     ?>

@@ -469,6 +469,20 @@ add_filter( 'query_vars', function( $query_vars ) {
 add_action('init', 'custom_rewrite_pcouncil', 10, 0);
 
 /*
+* Редирект и переменная для рейтингов
+*/
+function custom_rewrite_ratings() {
+  add_rewrite_rule('category/reitingi/([a-z0-9-]+)[/]?$','index.php?page_id=11786&rating_cat=$matches[1]','top');
+}
+add_filter( 'query_vars', function( $query_vars ) {
+  $query_vars[] = 'rating_cat';
+  return $query_vars;
+});
+add_action('init', 'custom_rewrite_ratings', 10, 0);
+
+
+
+/*
 * Без заголовка
 */
 add_filter( 'query_vars', function( $query_vars ) {

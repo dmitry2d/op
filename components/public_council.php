@@ -21,7 +21,7 @@ if (!is_null($doc_slug)) {
     
     $doc_post = get_posts(array(
         'category_name' => $documents,
-        'name' => $doc_name,
+        'name' => $doc_slug,
         'posts_per_page' => -1 
     ))[0];
 }
@@ -54,7 +54,7 @@ if (!is_null($doc_slug)) {
     
     <!-- Если это документ -->
     
-    <h3><?=$doc_post->post_title?></h3>
+    <h2><?=$doc_post->post_title?></h2>
     
     <div>
         <?=$doc_post->post_content?>
