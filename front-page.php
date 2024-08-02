@@ -26,7 +26,7 @@ get_header();
           foreach( $myposts as $key => $post ){
             setup_postdata( $post );
             if(get_field('banner_format') == 'wide') {
-              $banner_class = "uk-width-1-2@s";
+              $banner_class = "uk-width-1-4@s";
             } else {
               $banner_class = "uk-width-1-2@s uk-width-1-4@l";
             }

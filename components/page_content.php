@@ -27,6 +27,11 @@ switch ($post->ID) {
         get_template_part('components/documents');
     break;
 
+    // Страница "Документы ОНК"
+    case 11819:
+        get_template_part('components/documents_onk');
+    break;
+
     // Страница "Общественные советы"
     case 11576:
         get_template_part('components/public_council');

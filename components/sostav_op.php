@@ -31,23 +31,7 @@ if ( ! is_null($sozyv_post)) {
 
     $sozyv_members = get_field('members', $sozyv_post->ID);
 
-    // $sozyv_members = get_posts (array( 
-    //     'post_type' => 'member',
-    //     'posts_per_page' => 1000,
-    //     'meta_key'      => 'gody',
-    //     'meta_value'    => $years
-    // ));
-
-
-
-
     ?>
-        <!-- <div>
-            <a href="/sostav-palaty/">
-                <i class="fa fa-angle-double-left" aria-hidden="true"></i>&nbsp;
-                Состав палаты
-            </a>
-        </div> -->
         <h2><?= $sozyv_post->post_title ?></h2>
         <div class="sozyv_content">
             <?= $sozyv_post->post_content ?>

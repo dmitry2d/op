@@ -11,6 +11,37 @@
 
     ul.sub-menu {
         top: 50px;
-    }
+        padding: 10px 0;
+        background-color: #2d73bc;
+        .current-menu-item a {
+            color: white;
+            font-weight: 700;
+            text-decoration: underline;
+        }
+        a {
+            padding: 5px 20px 5px 30px;
+        }
+        a:hover {
+            // color: white!important;
+            background: white;
+            text-decoration: none;
+        }
 
+        .sub-menu {
+            position: relative;
+            top: 0;
+            left: 0;
+            padding: 0;
+            a {
+                padding-left: 45px;
+            }
+        }
+
+    }
+}
+
+#page.frontpage {
+    .topmenu_wrapper ul.sub-menu a {
+        color: white;
+    }
 }

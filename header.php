@@ -15,7 +15,13 @@
 	<meta name="msapplication-TileColor" content="#2b5797">
 	<meta name="theme-color" content="#000000">
 	<?php wp_head();
-		is_front_page() ? $cls_front = "frontpage" : $cls_front = "";
+		$cls_front = "";
+		$logo_url = "/wp-content/themes/oac/images/logo_white.png";
+		if (is_front_page()) {
+			$cls_front = "frontpage";
+			$logo_url = "/wp-content/themes/oac/images/logo.png";
+		}
+
 	?>
 </head>
 
@@ -27,7 +33,7 @@
 				<div uk-navbar>
 					<div class="uk-navbar-left">
 						<a class="uk-navbar-item uk-logo" href="/" title='ГОКУ "ОАЦ"'>
-							<img src="/wp-content/themes/oac/images/oac-logo.svg" width="60px" alt='ГОКУ "ОАЦ"'> <span class="uk-margin-left" style="line-height: 26px;">Общественная палата<BR>Новгородской области <!--strong>ОАЦ</strong--></span>
+							<img src="<?=$logo_url?>" width="60px" alt='ГОКУ "ОАЦ"'> <span class="uk-margin-left" style="line-height: 26px;">Общественная палата<BR>Новгородской области <!--strong>ОАЦ</strong--></span>
 						</a>
 					</div>
 					<div class="uk-width-expand uk-flex uk-flex-middle uk-position-relative">

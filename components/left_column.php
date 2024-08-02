@@ -83,6 +83,20 @@
             <?php 
         break;
 
+        // Страница "ОНК"
+        case  11819:
+            ?>
+                <div class="uk-width-1-3@m uk-width-1-4@l left-column">
+                    <?php
+                        wp_nav_menu(array(
+                            'menu' => '36',
+                            'menu_class' => 'left-column-menu',
+                        ));
+                    ?>
+                </div>
+            <?php 
+        break;
+
     }
 
     ?>

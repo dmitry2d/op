@@ -11,12 +11,48 @@
     if (!is_null($cat_slug)) {
         
         $cat_name = get_category_by_slug($cat_slug)->name;
-        $posts = get_posts(array(
+        $posts_sorted = get_posts(array(
             'category_name' => $cat_slug,
-            'posts_per_page' => -1 
+            'posts_per_page' => -1,
+            'orderby' => 'meta_value_num',
+            'meta_key' => 'index',
+            'order' => 'ASC',
+            'meta_query'     => array(
+                'relation' => 'AND',
+                array(
+                    'key'     => 'index',
+                    'compare' => 'EXISTS',
+                ),
+                array(
+                    'key'     => 'index',
+                    'value' => '',
+                    'compare' => '!=',
+                ),
+            ),
         ));
+        $posts_unsorted = get_posts(array(
+            'category_name' => $cat_slug,
+            'posts_per_page' => -1,
+            'meta_query'     => array(
+                'relation' => 'OR',
+                array(
+                    'key'     => 'index',
+                    'compare' => 'NOT EXISTS',
+                ),
+                array(
+                    'key'     => 'index',
+                    'value' => '',
+                    'compare' => '=',
+                ),
+            ),
+            'orderby' => 'DATE',
+            'order' => 'DESC'
+
+        ));
+        $posts = array_merge($posts_sorted, $posts_unsorted);
 
     }
+
 
     if (!is_null($doc_slug)) {
         
@@ -32,19 +68,26 @@
 
 <!-- Если это категория -->
 
-<?php if ($posts) { ?>
+<?php if ($posts) {
+    
+    $list_view = !!! get_the_post_thumbnail_url($posts[0]);
+?>
 
 <h2><?=$cat_name?></h3>
+
 
 <div class="uk-grid">
     
     <?php foreach($posts as $post) {
+        
         $_file = get_field('file', $post->ID);
+        $_list = is_null($_flile);
         $_link = $_file ? $_file : get_the_permalink($post->ID);
         $_thumb = get_the_post_thumbnail_url($post, 'thumbnail' );
         $_thumb = $_thumb ?: wp_get_attachment_image_src(11575, 'thumbnail' )[0];
+    
+        if ($list_view == false) {
 
-        // $_thumb_html = $_thumb ? $_thumb : '<i class="fa fa-file-text" aria-hidden="true"></i>&nbsp;&nbsp;'; 
     ?>
 
     <div class="uk-width-1-1 uk-width-1-2@m uk-width-1-3@l uk-width-1-4@xl">
@@ -53,13 +96,26 @@
                 <div class="card-img">
                   <img src="<?=$_thumb?>" uk-img>
                 </div>
-                <div class="uk-margin uk-h3"><a href="<?=$_link?>"><?=$post->post_title?></a></div>
+                <div class="uk-margin"><a class="doc-link" href="<?=$_link?>"><?=$post->post_title?></a></div>
             </div>
         </div>
+    </div>
+
+        <?php } else { ?>
+
+    <div class="uk-width-1-1">
+        <div class="uk-card">
+            <div class="uk-card-wrap">
+                 <div class="uk-margin"><a  class="doc-link" href="<?=$_link?>"><?=$post->post_title?></a></div>
+            </div>
+        </div>
+    </div>
 
         <?php } ?>
-    
-    </div>
+
+    <?php } ?>
+
+</div>
 
 
 <?php } else if ($doc_post) { ?>
