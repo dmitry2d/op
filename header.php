@@ -23,6 +23,10 @@
 		}
 
 	?>
+	
+	<link href="/wp-content/themes/oac/assets/lightbox/css/lightbox.css" rel="stylesheet" />
+	<script src="/wp-content/themes/oac/assets/lightbox/js/lightbox.js"></script>
+	
 </head>
 
 <body>

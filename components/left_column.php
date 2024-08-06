@@ -84,7 +84,9 @@
         break;
 
         // Страница "ОНК"
+        case  11814:
         case  11819:
+        case  12185:
             ?>
                 <div class="uk-width-1-3@m uk-width-1-4@l left-column">
                     <?php

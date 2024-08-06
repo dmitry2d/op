@@ -481,6 +481,31 @@ add_filter( 'query_vars', function( $query_vars ) {
 add_action('init', 'custom_rewrite_ratings', 10, 0);
 
 
+/*
+* Редирект и переменная для новости ОНК
+*/
+function custom_rewrite_onknews() {
+  add_rewrite_rule('onk-news/([a-z0-9-]+)[/]?$','index.php?page_id=12185&onk_news_name=$matches[1]','top');
+}
+add_filter( 'query_vars', function( $query_vars ) {
+  $query_vars[] = 'onk_news_name';
+  return $query_vars;
+});
+add_action('init', 'custom_rewrite_onknews', 10, 0);
+
+/*
+* Редирект и переменная для галереи
+*/
+function custom_rewrite_gallery() {
+  add_rewrite_rule('gallery/([a-z0-9-]+)[/]?$','index.php?page_id=12652&gallery_name=$matches[1]','top');
+}
+add_filter( 'query_vars', function( $query_vars ) {
+  $query_vars[] = 'gallery_name';
+  return $query_vars;
+});
+add_action('init', 'custom_rewrite_gallery', 10, 0);
+
+
 
 /*
 * Без заголовка

@@ -43,10 +43,10 @@
                 <div class="uk-margin uk-h3"><a href="<?=$_file?>"><?=$post->post_title?></a></div>
             </div>
         </div>
-
-        <?php } ?>
-    
     </div>
+
+    <?php } ?>
+    
 
 
 <?php } else if ($doc_post) { ?>

@@ -21,25 +21,11 @@
 			$temp = $wp_query;
       $wp_query = null;
       $wp_query = new WP_Query();
-
-      // $params = array(
-      //   'post_type' => 'novost',
-      //   'orderby'   => array(
-      //     'date' =>'DESC'
-      //    )
-      // );
-
-      // $wp_query = new WP_Query($params);
-
-      // $wp_query->query('post_type=novost'.'&paged='.$paged.'&orderby=date');
       $wp_query->query(array (
         'post_type' => 'novost',
         'paged' => $paged,
         'orderby' => 'date',
         'order' => 'ASC'
-          // array(
-          //   'date' =>'DESC'
-          // )
         )
       );
 

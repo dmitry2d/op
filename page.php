@@ -32,7 +32,7 @@ $no_title = (
 	</div>
 	<?php } ?>
 
-	<section class="uk-section uk-section-medium">
+	<section class="uk-section uk-section-small">
 		<div class="uk-container uk-container-xlarge" uk-scrollspy="cls: uk-animation-slide-bottom-medium;">
 
 			<div class="uk-grid">

@@ -50,17 +50,14 @@
 
     
         $_link = get_field('file', $post->ID);
-        $_thumb = get_the_post_thumbnail_url($post, 'thumbnail' );
-        $_thumb = $_thumb ?: wp_get_attachment_image_src(11575, 'thumbnail' )[0];
+        // $_thumb = get_the_post_thumbnail_url($post, 'thumbnail' );
+        // $_thumb = $_thumb ?: wp_get_attachment_image_src(11575, 'thumbnail' )[0];
     ?>
 
-    <div class="uk-width-1-1 uk-width-1-2@m uk-width-1-3@l uk-width-1-4@xl">
+    <div class="uk-width-1-2@l">
         <div class="uk-card">
             <div class="uk-card-wrap">
-                <div class="card-img">
-                  <img src="<?=$_thumb?>" uk-img>
-                </div>
-                <div class="uk-margin"><a class="doc-link" href="<?=$_link?>"><?=$post->post_title?></a></div>
+                 <div class="uk-margin"><a  class="doc-link" href="<?=$_link?>"><?=$post->post_title?></a></div>
             </div>
         </div>
     </div>

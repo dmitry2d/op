@@ -42,6 +42,21 @@ switch ($post->ID) {
         get_template_part('components/raitings');
     break;
         
+    // Страница "Новости ОНК"
+    case 12185:
+        get_template_part('components/news-onk');
+    break;
+
+    // Страница "Состав ОНК"
+    case 11814:
+        get_template_part('components/sostav-onk');
+    break;
+
+    // Страница "Галереи"
+    case 12652:
+        get_template_part('components/galleries');
+    break;
+        
     // Страница по умолчанию
     default:
     ?>

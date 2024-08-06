@@ -103,7 +103,7 @@
 
         <?php } else { ?>
 
-    <div class="uk-width-1-1">
+    <div class="uk-width-1-2@l">
         <div class="uk-card">
             <div class="uk-card-wrap">
                  <div class="uk-margin"><a  class="doc-link" href="<?=$_link?>"><?=$post->post_title?></a></div>
