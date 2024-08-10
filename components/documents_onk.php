@@ -24,6 +24,7 @@
                 'compare' => '!=',
             ),
         ),
+        'posts_per_page' => -1
     ));
     $posts_unsorted = get_posts(array( 
         'post_type' => 'post',

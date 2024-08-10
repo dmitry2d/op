@@ -63,7 +63,8 @@ if ( ! is_null($comission_post)) {
     $comission_posts = get_posts (array( 
         'post_type' => 'post',
         'post_status' => 'publish',
-        'cat' => 12
+        'cat' => 12,
+        'posts_per_page' => -1
     ));
 
     foreach ($comission_posts as $comission_post) {

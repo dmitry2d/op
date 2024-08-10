@@ -67,7 +67,8 @@ if ( ! is_null($sozyv_post)) {
         'post_status' => 'publish',
         'cat' => 9,
         'meta_key' => 'gody',
-        'meta_value' => get_field('sozyv',$member_post->ID)
+        'meta_value' => get_field('sozyv',$member_post->ID),
+        'posts_per_page' => -1
     ))) $sozyv_post = $sozyv_posts[0];
 
     $group_posts = get_posts (array( 
@@ -80,7 +81,8 @@ if ( ! is_null($sozyv_post)) {
                 'value' => $member_post->ID,
                 'compare' => 'LIKE'
             )
-        )
+        ),
+        'posts_per_page' => -1
     ));
     $comission_posts = get_posts (array( 
         'post_type' => 'post',
@@ -92,7 +94,8 @@ if ( ! is_null($sozyv_post)) {
                 'value' => $member_post->ID,
                 'compare' => 'LIKE'
             )
-        )
+        ),
+        'posts_per_page' => -1
     ));
 
 ?>
@@ -110,7 +113,9 @@ if ( ! is_null($sozyv_post)) {
         <br>
     <div class="sozyv_member">
         <div class="sozyv_member__img">
-            <?= get_the_post_thumbnail($member_post)?>
+            <a href="<?= get_the_post_thumbnail_url($member_post, 'full')?>" data-lightbox="gallery">
+                <img src="<?= get_the_post_thumbnail_url($member_post, 'thumbnail')?>">
+            </a>
         </div>
         <div class="sozyv_member__data">
             <b><small><?=get_field('dolzhnost',$member_post->ID)?></small></b>
@@ -163,7 +168,8 @@ if ( ! is_null($sozyv_post)) {
     $sozyv_posts = get_posts (array( 
         'post_type' => 'post',
         'post_status' => 'publish',
-        'cat' => 9
+        'cat' => 9,
+        'posts_per_page' => -1
     ));
 
     foreach ($sozyv_posts as $sozyv_post) {

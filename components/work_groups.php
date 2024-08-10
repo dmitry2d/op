@@ -63,7 +63,8 @@ if ( ! is_null($group_post)) {
     $group_posts = get_posts (array( 
         'post_type' => 'post',
         'post_status' => 'publish',
-        'cat' => 11
+        'cat' => 11,
+        'posts_per_page' => -1
     ));
 
     foreach ($group_posts as $group_post) {

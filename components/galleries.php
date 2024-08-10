@@ -63,7 +63,8 @@ else {
 $posts =  get_posts (array( 
     'post_type' => 'post',
     'post_status' => 'publish',
-    'cat' => 39
+    'cat' => 39,
+    'posts_per_page' => -1
 ));
 
 foreach ($posts as $post) {
@@ -71,7 +72,7 @@ foreach ($posts as $post) {
     ?>
         <div class="sozyv_member uk-width-1-1@s uk-width-1-2@m uk-width-1-3@l">
             <div class="sozyv_member__img">
-                    <img src="<?= $image['sizes']['thumbnail'] ?>" alt="">
+                <img src="<?= $image['sizes']['thumbnail'] ?>" alt="">
             </div>
             <div class="sozyv_member__data">
                 <h3>
