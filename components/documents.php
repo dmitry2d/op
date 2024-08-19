@@ -17,18 +17,18 @@
             'orderby' => 'meta_value_num',
             'meta_key' => 'index',
             'order' => 'ASC',
-            'meta_query'     => array(
-                'relation' => 'AND',
-                array(
-                    'key'     => 'index',
-                    'compare' => 'EXISTS',
-                ),
-                array(
-                    'key'     => 'index',
-                    'value' => '',
-                    'compare' => '!=',
-                ),
-            ),
+            // 'meta_query'     => array(
+            //     'relation' => 'AND',
+            //     array(
+            //         'key'     => 'index',
+            //         'compare' => 'EXISTS',
+            //     ),
+            //     array(
+            //         'key'     => 'index',
+            //         'value' => '',
+            //         'compare' => '!=',
+            //     ),
+            // ),
         ));
         $posts_unsorted = get_posts(array(
             'category_name' => $cat_slug,
@@ -39,11 +39,11 @@
                     'key'     => 'index',
                     'compare' => 'NOT EXISTS',
                 ),
-                array(
-                    'key'     => 'index',
-                    'value' => '',
-                    'compare' => '=',
-                ),
+                // array(
+                //     'key'     => 'index',
+                //     'value' => '',
+                //     'compare' => '=',
+                // ),
             ),
             'orderby' => 'DATE',
             'order' => 'DESC'
@@ -87,8 +87,8 @@
         $_file = get_field('file', $post->ID);
         $_list = is_null($_file);
         $_link = $_file ? $_file : get_the_permalink($post->ID);
-        $_thumb = get_the_post_thumbnail_url($post, 'thumbnail' );
-        $_thumb = $_thumb ?: wp_get_attachment_image_src(11575, 'thumbnail' )[0];
+        $_thumb = get_the_post_thumbnail_url($post, 'post-thumbnail' );
+        $_thumb = $_thumb ?: wp_get_attachment_image_src(11575, 'post-thumbnail' )[0];
     
         if ($list_view == false) {
 
@@ -99,7 +99,7 @@
         <div class="uk-card">
             <div class="uk-card-wrap">
                 <div class="card-img">
-                  <img src="<?=$_thumb?>" uk-img>
+                <a class="" href="<?=$_link?>"><img src="<?=$_thumb?>" uk-img></a>
                 </div>
                 <div class="uk-margin"><a class="doc-link" href="<?=$_link?>"><?=$post->post_title?></a></div>
             </div>

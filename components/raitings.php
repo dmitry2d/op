@@ -26,7 +26,7 @@
     
     <?php foreach($posts as $post) {
         $_file = get_field('file', $post->ID);
-        $_thumb = get_the_post_thumbnail_url($post, 'thumbnail') ?: wp_get_attachment_image_src(11575)[0];
+        $_thumb = get_the_post_thumbnail_url($post, 'post-thumbnail') ?: wp_get_attachment_image_src(11575)[0];
         $_cover = get_the_post_thumbnail_url($post, 'full') ?: wp_get_attachment_image_src(11575)[0];
 
     ?>
@@ -34,7 +34,7 @@
     <div class="uk-width-1-1 uk-width-1-2@m uk-width-1-3@l uk-width-1-4@xl">
         <div class="uk-card">
             <div class="uk-card-wrap">
-                <a href="<?=$_cover?>" class="card-img" data-lightbox="gallery">
+                <a href="<?=$_file?>" class="card-img" data-lightbox="gallery">
                   <img src="<?=$_thumb?>" uk-img>
                 </a>
                 <div class="uk-margin uk-h3"><a href="<?=$_file?>"><?=$post->post_title?></a></div>

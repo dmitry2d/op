@@ -19,11 +19,11 @@ if (!is_null($cat_slug)) {
                 'key'     => 'index',
                 'compare' => 'NOT EXISTS',
             ),
-            array(
-                'key'     => 'index',
-                'value' => '',
-                'compare' => '=',
-            ),
+            // array(
+            //     'key'     => 'index',
+            //     'value' => '',
+            //     'compare' => '=',
+            // ),
         ),
         'orderby' => 'title',
         'order' => 'ASC'
@@ -67,7 +67,7 @@ if (!is_null($doc_slug)) {
                 <div class="uk-margin-small-bottom">
                     <div class="uk-grid">
                         <div class="">
-                            <i class="fa fa-address-book-o" aria-hidden="true"></i>
+                            <i class="fa fa-address-book-o" aria-hidden="true" style="margin-top: 10px"></i>
                         </div>
                         <div class="uk-width-expand uk-margin-small-bottom">
                             <h3>

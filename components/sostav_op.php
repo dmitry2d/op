@@ -40,7 +40,7 @@ if ( ! is_null($sozyv_post)) {
         <?php
             foreach ($sozyv_members as $sozyv_member) {
                 ?>
-                    <div class="sozyv_member uk-width-1-1@s uk-width-1-2@m">
+                    <div class="sozyv_member uk-width-1-1@s uk-width-1-1@m uk-width-1-2@l">
                         <div class="sozyv_member__img">
                             <?= get_the_post_thumbnail($sozyv_member)?>
                         </div>
@@ -112,9 +112,9 @@ if ( ! is_null($sozyv_post)) {
     <?php } ?>
         <br>
     <div class="sozyv_member">
-        <div class="sozyv_member__img">
+        <div class="sozyv_member__img single">
             <a href="<?= get_the_post_thumbnail_url($member_post, 'full')?>" data-lightbox="gallery">
-                <img src="<?= get_the_post_thumbnail_url($member_post, 'thumbnail')?>">
+                <img src="<?= get_the_post_thumbnail_url($member_post, 'post-thumbnail')?>">
             </a>
         </div>
         <div class="sozyv_member__data">

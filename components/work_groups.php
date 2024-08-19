@@ -64,14 +64,17 @@ if ( ! is_null($group_post)) {
         'post_type' => 'post',
         'post_status' => 'publish',
         'cat' => 11,
-        'posts_per_page' => -1
+        'posts_per_page' => -1,
+        'orderby' => 'meta_value_num',
+        'meta_key' => 'index',
+        'order' => 'ASC'
     ));
 
     foreach ($group_posts as $group_post) {
         ?>
             <div class="sozyv_link">
                 <h3>
-                    <i class="fa fa-address-book-o" aria-hidden="true"></i>
+                    <i class="fa fa-address-book-o" aria-hidden="true" style="margin-top: 10px"></i>
                     &nbsp;&nbsp;
                     <a href="<?the_permalink($group_post->ID)?>"><?=$group_post->post_title?></a>
                 </h3>

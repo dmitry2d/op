@@ -33,23 +33,25 @@ if ($gal_name) {
     if (! is_null($gallerys)) foreach ($gallerys as $gallery) {
     ?>
 
-        <div class="sozyv_member uk-width-1-1@s uk-width-1-2@m uk-width-1-3@l uk-width-1-4@xl">
-            <div class="sozyv_member__img">
+        <div class="uk-width-1-2 uk-width-1-3@l uk-width-1-4@xl uk-margin-small">
+        <!-- <div class="sozyv_member uk-width-1-1@s uk-width-1-2@m uk-width-1-3@l uk-width-1-4@xl"> -->
+            <!-- <div class="sozyv_member__img"> -->
+            <!-- <div class=""> -->
                 <a href="<?= $gallery['url']?>" data-lightbox="gallery">
                     <img src="<?= $gallery['sizes']['thumbnail'] ?>" alt="">
                 </a>
-            </div>
-            <div class="sozyv_member__data">
-                <h4>
-                    <?= $gallery['title'] ?>
-                </h4>
-                <div>
-                    <small><?= $gallery['caption'] ?></small>
-                </div>
-                <small class="uk-text-small" style="font-size: 10px;">
-                    <?= $gallery['date'] ?>
-                </small>
-            </div>
+            <!-- </div> -->
+            <!-- <div class="sozyv_member__data"> -->
+                <!-- <h4> -->
+                    <?= '' //$gallery['title'] ?>
+                <!-- </h4> -->
+                <!-- <div> -->
+                    <!-- <small><?= '' // $gallery['caption'] ?></small> -->
+                <!-- </div> -->
+                <!-- <small class="uk-text-small" style="font-size: 10px;">
+                    <?= '' // $gallery['date'] ?>
+                </small> -->
+            <!-- </div> -->
         </div>
         <?php
     }

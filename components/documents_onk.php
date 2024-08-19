@@ -12,18 +12,18 @@
         'orderby' => 'meta_value_num',
         'meta_key' => 'index',
         'order' => 'DESC',
-        'meta_query'     => array(
-            'relation' => 'AND',
-            array(
-                'key'     => 'index',
-                'compare' => 'EXISTS',
-            ),
-            array(
-                'key'     => 'index',
-                'value' => '',
-                'compare' => '!=',
-            ),
-        ),
+        // 'meta_query'     => array(
+        //     'relation' => 'AND',
+        //     array(
+        //         'key'     => 'index',
+        //         'compare' => 'EXISTS',
+        //     ),
+        //     array(
+        //         'key'     => 'index',
+        //         'value' => '',
+        //         'compare' => '!=',
+        //     ),
+        // ),
         'posts_per_page' => -1
     ));
     $posts_unsorted = get_posts(array( 
@@ -36,11 +36,11 @@
                 'key'     => 'index',
                 'compare' => 'NOT EXISTS',
             ),
-            array(
-                'key'     => 'index',
-                'value' => '',
-                'compare' => '=',
-            ),
+            // array(
+            //     'key'     => 'index',
+            //     'value' => '',
+            //     'compare' => '=',
+            // ),
         ),
         'orderby' => 'DATE',
         'order' => 'DESC'
