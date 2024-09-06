@@ -34,7 +34,7 @@
     <div class="uk-width-1-1 uk-width-1-2@m uk-width-1-3@l uk-width-1-4@xl">
         <div class="uk-card">
             <div class="uk-card-wrap">
-                <a href="<?=$_file?>" class="card-img" data-lightbox="gallery">
+                <a href="<?=$_file?>" class="card-img">
                   <img src="<?=$_thumb?>" uk-img>
                 </a>
                 <div class="uk-margin uk-h3"><a href="<?=$_file?>"><?=$post->post_title?></a></div>

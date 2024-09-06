@@ -33,6 +33,19 @@ if ( ! is_null($comission_post)) {
                         <?php
                     }
                 ?>
+                <h3>Заместитель председателя:</h3>
+                <?php 
+                    $members = get_field('predsedatel_zam', $comission_post);
+                    if (! is_null($members)) foreach ($members as $member) {
+                        ?>
+
+                        <div class="">
+                            <i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;<a href="<?=get_the_permalink(($member->ID))?>"><?=$member->post_title?></a>
+                        </div>
+
+                        <?php
+                    }
+                ?>
                 <h3>Состав:</h3>
                 <?php 
                     $members = get_field('sostav', $comission_post);

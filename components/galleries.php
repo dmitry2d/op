@@ -62,12 +62,39 @@ else {
 
 ?> <div class="uk-grid"> <?php
 
-$posts =  get_posts (array( 
+
+$posts_sorted = get_posts (array( 
     'post_type' => 'post',
-    'post_status' => 'publish',
     'cat' => 39,
+    'orderby' => 'meta_value_num',
+    'meta_key' => 'index',
+    'order' => 'ASC',
     'posts_per_page' => -1
 ));
+$posts_unsorted = get_posts(array( 
+    'post_type' => 'post',
+    'cat' => 39,
+    'posts_per_page' => -1,
+    'meta_query'     => array(
+        'relation' => 'OR',
+        array(
+            'key'     => 'index',
+            'compare' => 'NOT EXISTS',
+        ),
+    ),
+    'orderby' => 'DATE',
+    'order' => 'DESC'
+
+));
+$posts = array_merge($posts_sorted, $posts_unsorted);
+
+
+// $posts =  get_posts (array( 
+//     'post_type' => 'post',
+//     'post_status' => 'publish',
+//     'cat' => 39,
+//     'posts_per_page' => -1
+// ));
 
 foreach ($posts as $post) {
     $image = get_field('images', $post->ID)[0];
