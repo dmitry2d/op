@@ -433,6 +433,18 @@ add_filter( 'query_vars', function( $query_vars ) {
 add_action('init', 'custom_rewrite_documents', 10, 0);
 
 /*
+* Редирект и переменная для документов с подпапкой
+*/
+function custom_rewrite_documents2() {
+  add_rewrite_rule('category/documenti/([a-z0-9-]+)/([a-z0-9-]+)[/]?$','index.php?page_id=8489&doc_cat=$matches[2]&cat_parent=$matches[1]','top');
+}
+add_filter( 'query_vars', function( $query_vars ) {
+  $query_vars[] = 'cat_parent';
+  return $query_vars;
+});
+add_action('init', 'custom_rewrite_documents2', 10, 0);
+
+/*
 * Редирект и переменная для документа
 */
 function custom_rewrite_document() {
